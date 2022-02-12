@@ -5,7 +5,8 @@ interface ContextValues {
   alert: (message: string) => void;
 }
 
-// @ts-ignore
+// @ts-ignore, type complexity, by nature createContext initial value
+// can be empty
 const SnackBarContext = createContext<ContextValues>();
 
 function SnackBarProvider({ children }) {

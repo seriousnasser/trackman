@@ -6,9 +6,8 @@ import { createPortal } from 'react-dom';
 
 function Snackbar() {
   const timeoutRef = useRef<NodeJS.Timeout>();
-
   const { message, alert } = useSnackBarStore();
-  console.log(message);
+
   useEffect(() => {
     if (message) {
       timeoutRef.current = setTimeout(() => {

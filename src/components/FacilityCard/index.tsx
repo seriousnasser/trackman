@@ -13,7 +13,7 @@ function FacilityCard({ data }: Props) {
       <Card>
         <CardContent>
           <h2 className={styles.name}>{data.name}</h2>
-          <div>
+          <div className={styles.type}>
             {data.type} <span>Facility</span>
           </div>
           <address className={styles.address}>address: {data.address}</address>

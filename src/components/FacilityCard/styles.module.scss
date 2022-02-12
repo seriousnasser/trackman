@@ -12,6 +12,10 @@
   composes: ellipsis;
 }
 
+.type {
+  text-transform: capitalize;
+}
+
 .address {
   composes: ellipsis;
 }

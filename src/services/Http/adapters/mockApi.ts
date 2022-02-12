@@ -4,14 +4,14 @@ import { API_ENDPOINT_URL } from 'configs/configs';
 import { FacilityEntity } from 'models/Facility';
 import FacilityMockStorageService from 'services/FacilityMockStorageService';
 
-const facilitiesRegex = /\/facilities\//;
-
 function mockApi(httpService: AxiosInstance) {
+  const facilitiesRegex = /\/facilities\//;
+
   const HttpMockService = new MockAdapter(httpService, { delayResponse: 1000 });
 
   // Get one
   HttpMockService.onGet(facilitiesRegex).reply(config => {
-    const id = config.url?.replace(API_ENDPOINT_URL + '/facilities/', '');
+    const id = getIdFromUrl(config.url!);
     const data = FacilityMockStorageService.getOne(id as string);
 
     return [data ? 200 : 404, data];
@@ -26,7 +26,7 @@ function mockApi(httpService: AxiosInstance) {
 
   // Update
   HttpMockService.onPut(facilitiesRegex).reply(config => {
-    const id = config.url?.replace(API_ENDPOINT_URL + '/facilities/', '');
+    const id = getIdFromUrl(config.url!);
 
     FacilityMockStorageService.put(
       JSON.parse(config.data) as FacilityEntity,
@@ -38,7 +38,7 @@ function mockApi(httpService: AxiosInstance) {
 
   // Delete
   HttpMockService.onDelete(facilitiesRegex).reply(config => {
-    const id = config.url?.replace(API_ENDPOINT_URL + '/facilities/', '');
+    const id = getIdFromUrl(config.url!);
 
     if (id) {
       FacilityMockStorageService.remove(id);
@@ -51,6 +51,10 @@ function mockApi(httpService: AxiosInstance) {
   HttpMockService.onGet(API_ENDPOINT_URL + '/facilities').reply(() => {
     return [200, FacilityMockStorageService.getSortedArray()];
   });
+}
+
+function getIdFromUrl(url: string) {
+  return url.replace(API_ENDPOINT_URL + '/facilities/', '');
 }
 
 export { mockApi };
