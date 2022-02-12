@@ -1,0 +1,22 @@
+.header {
+  background-color: #FFFFFF;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  height: 80px;
+  padding: 0 16px;
+
+  > * {
+    width: 33.3%
+  }
+}
+
+nav {
+  text-align: left;
+  > * {
+    display: inline-block;
+    margin-right: $default-spacing;
+  }
+}
+
+.profile {
+  text-align: right;
+}
