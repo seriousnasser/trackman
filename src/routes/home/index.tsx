@@ -5,13 +5,19 @@ import FacilityModel, { FacilityEntity } from 'models/Facility';
 import FacilityCard from 'components/FacilityCard';
 import Spinner from 'components/Spinner';
 import Facility from '../facility';
+import { useSnackBarStore } from 'stores/snackbar';
 
 function Home() {
   const [facilities, setFacilities] = useState<FacilityEntity[]>();
+  const { alert } = useSnackBarStore();
 
   const fetchList = async () => {
-    const { data } = await FacilityModel.getList();
-    setFacilities(data);
+    try {
+      const { data } = await FacilityModel.getList();
+      setFacilities(data);
+    } catch {
+      alert('Unexpected error happened, please try again.');
+    }
   };
 
   const refetchList = useCallback(() => {
