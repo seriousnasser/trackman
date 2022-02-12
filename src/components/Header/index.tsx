@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import styles from './styles.module.scss';
 import { Link } from 'react-router-dom';
-import logo from 'assets/logo.svg';
+import logo from '../../assets/logo.svg';
 
 function Header() {
   return (
