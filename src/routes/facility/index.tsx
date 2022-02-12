@@ -23,7 +23,7 @@ import {
   readyAction,
 } from './form-reducer';
 import Spinner from 'components/Spinner';
-import { useSnackBarStore } from '../../stores/snackbar';
+import { useSnackBarStore } from 'stores/snackbar';
 
 const boxStyle = {
   position: 'absolute',

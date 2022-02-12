@@ -2,7 +2,7 @@ import MockAdapter from 'axios-mock-adapter';
 import { AxiosInstance } from 'axios';
 import { API_ENDPOINT_URL } from 'configs/configs';
 import { FacilityEntity } from 'models/Facility';
-import FacilityMockStorageService from '../../FacilityMockStorageService';
+import FacilityMockStorageService from 'services/FacilityMockStorageService';
 
 const facilitiesRegex = /\/facilities\//;
 

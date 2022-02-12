@@ -1,5 +1,5 @@
-import { FacilityEntity } from 'models/Facility';
 import { Reducer } from 'react';
+import { FacilityEntity } from 'models/Facility';
 
 enum ActionType {
   CHANGE = 'CHANGE',
