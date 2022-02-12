@@ -1,4 +1,9 @@
-import React, { useEffect, useReducer } from 'react';
+import React, {
+  ChangeEvent,
+  SyntheticEvent,
+  useEffect,
+  useReducer,
+} from 'react';
 import {
   Box,
   Button,
@@ -44,7 +49,6 @@ function Facility({ onSubmit }: Props) {
   const navigate = useNavigate();
   const { id } = useParams();
   const { alert } = useSnackBarStore();
-  const title = id ? 'Edit Information' : 'Create Facility';
 
   const [{ values, errors, isSubmitting, isPending }, dispatch] = useReducer(
     reducer,
@@ -76,12 +80,12 @@ function Facility({ onSubmit }: Props) {
       replace: true,
     });
 
-  const handleInputChange = e => {
-    const { name, value } = e.target;
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
     dispatch(changeAction({ [name]: value }));
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event: SyntheticEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
     const validationResult = validate(values);
@@ -140,7 +144,7 @@ function Facility({ onSubmit }: Props) {
           width="100%"
           justifyContent="space-between"
           alignItems="center">
-          <h3>{title}</h3>
+          <Title id={id} />
 
           {id && (
             <Button variant="text" color="primary" onClick={handleDelete}>
@@ -214,6 +218,14 @@ function Facility({ onSubmit }: Props) {
       </Box>
     </Modal>
   );
+}
+
+interface TitleProps {
+  id?: string;
+}
+
+function Title({ id }: TitleProps) {
+  return <h3>{id ? 'Edit Information' : 'Create Facility'}</h3>;
 }
 
 function validate(values: Values): Values {
