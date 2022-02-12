@@ -7,14 +7,12 @@ enum ActionType {
   SUBMITTING = 'SUBMITTING',
   PENDING = 'PENDING',
   READY = 'READY',
-  ERROR = 'ERROR',
 }
 
 export type Values = Partial<Omit<FacilityEntity, 'id' | 'createdAt'>>;
 
 export interface State {
   isSubmitting: boolean;
-  isFailed: boolean;
   isPending: boolean;
   values: Values;
   errors: Values;
@@ -34,7 +32,6 @@ export const initialState: State = {
   isSubmitting: false,
   isPending: false,
   errors: {},
-  isFailed: false,
 };
 
 function changeAction(values: Values): Action {
