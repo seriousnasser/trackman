@@ -3,7 +3,7 @@
 ### Demo
 hosted on github pages:
 
-https://nasserghiasi.github.io/trackman/
+https://seriousnasser.github.io/trackman/
 
 Github pages has some restrictions, so for testing full functionality please run locally.
 
