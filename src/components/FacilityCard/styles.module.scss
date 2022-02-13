@@ -1,0 +1,21 @@
+.cardLink {
+  text-decoration: none;
+  text-align: left;
+  display: block;
+  width: 23.2%
+}
+
+.name {
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  composes: ellipsis;
+}
+
+.type {
+  text-transform: capitalize;
+}
+
+.address {
+  composes: ellipsis;
+}

@@ -1,0 +1,17 @@
+.snackbar {
+  position: fixed;
+  bottom: 8px;
+  right: 8px;
+  left: 8px;
+  padding: 12px;
+  margin: auto;
+  background-color: #424242;
+  box-shadow:  0 2px 8px 0 rgba(0, 0, 0, 0.24);
+  border-radius: 8px;
+  z-index: 1000;
+  max-width: 400px;
+}
+
+.message {
+  color: white;
+}
