@@ -27,7 +27,7 @@ export default abstract class Model<Res, Req> {
     return HttpService.delete<Res>(this.getEndpoint(id));
   }
 
-  public getList<Q>() {
+  public getList() {
     return HttpService.get<Res[]>(this.apiEndpoint);
   }
 
