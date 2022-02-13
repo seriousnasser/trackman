@@ -39,10 +39,9 @@ const FacilityMockStorageService = {
     return this.sortByCreatedDate(this.getArray());
   },
   sortByCreatedDate(facilities: FacilityEntity[]) {
-    return facilities.sort((a, b) =>
-      a.createdAt && b.createdAt
-        ? new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-        : 0
+    return facilities.sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
     );
   },
   generateNextId(): string {
