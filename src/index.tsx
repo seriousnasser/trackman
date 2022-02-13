@@ -4,7 +4,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import Home from './routes/home';
-import Facility from './routes/facility';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 ReactDOM.render(
