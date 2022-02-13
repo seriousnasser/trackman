@@ -9,19 +9,22 @@ import { useSnackBarStore } from 'stores/snackbar';
 
 function Home() {
   const [facilities, setFacilities] = useState<FacilityEntity[]>();
+  const [loading, setLoading] = useState(true);
   const { alert } = useSnackBarStore();
 
   const fetchList = async () => {
     try {
       const { data } = await FacilityModel.getList();
       setFacilities(data);
+      setLoading(false);
     } catch {
       alert('Unexpected error happened, please try again.');
     }
   };
 
   const refetchList = useCallback(() => {
-    setFacilities(undefined);
+    setLoading(true);
+
     fetchList();
   }, []);
 
@@ -49,7 +52,7 @@ function Home() {
         </Grid>
       )}
 
-      {!facilities && <Spinner />}
+      {loading && <Spinner />}
 
       <Routes>
         <Route path=":id" element={<Facility onSubmit={refetchList} />} />

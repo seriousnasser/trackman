@@ -12,14 +12,14 @@ function mockApi(httpService: AxiosInstance) {
   // Get one
   HttpMockService.onGet(facilitiesRegex).reply(config => {
     const id = getIdFromUrl(config.url!);
-    const data = FacilityMockStorageService.getOne(id as string);
+    const data = FacilityMockStorageService.getOne(id);
 
     return [data ? 200 : 404, data];
   });
 
   // Create
   HttpMockService.onPost(API_ENDPOINT_URL + '/facilities').reply(config => {
-    FacilityMockStorageService.put(JSON.parse(config.data) as FacilityEntity);
+    FacilityMockStorageService.put(JSON.parse(config.data));
 
     return [201, config.data];
   });
@@ -28,10 +28,7 @@ function mockApi(httpService: AxiosInstance) {
   HttpMockService.onPut(facilitiesRegex).reply(config => {
     const id = getIdFromUrl(config.url!);
 
-    FacilityMockStorageService.put(
-      JSON.parse(config.data) as FacilityEntity,
-      id
-    );
+    FacilityMockStorageService.put(JSON.parse(config.data), id);
 
     return [200, config.data];
   });
